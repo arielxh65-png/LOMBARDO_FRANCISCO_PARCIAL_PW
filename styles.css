@@ -1,0 +1,183 @@
+/* styles.css - Solo HTML y CSS (no JS) */
+:root{
+  --bg:#0f1724;
+  --card:#0b1220;
+  --accent:#3b82f6;
+  --muted:#94a3b8;
+  --glass: rgba(255,255,255,0.03);
+  --round:12px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background:linear-gradient(180deg,#071021 0%, #0b1a2a 100%);
+  color:#e6eef8;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.5;
+}
+
+/* NAV */
+.nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0.8rem 1rem;
+  background:linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  backdrop-filter: blur(6px);
+  position:sticky;
+  top:0;
+  z-index:50;
+}
+.brand{font-weight:700; letter-spacing:0.6px}
+.nav nav{display:flex; gap:0.6rem}
+.nav-link{
+  text-decoration:none;
+  color:var(--muted);
+  padding:0.45rem 0.7rem;
+  border-radius:8px;
+  transition:all .25s ease;
+}
+.nav-link:hover{color:var(--accent); transform:translateY(-3px)}
+
+/* Container */
+.container{max-width:1100px;margin:2rem auto;padding:0 1rem}
+
+/* Hero */
+.hero{padding:1rem 0}
+.hero h1{font-size:2rem;margin:0 0 0.4rem}
+.lead{color:var(--muted);margin-top:0}
+
+/* Buttons - cinco botones animados (cada uno con su propia animación) */
+.buttons-row{display:flex;flex-wrap:wrap;gap:0.8rem;margin:1rem 0}
+.btn{
+  display:inline-block;
+  padding:0.7rem 1rem;
+  border-radius:10px;
+  text-decoration:none;
+  color:white;
+  font-weight:600;
+  transition:transform .25s ease;
+  box-shadow:0 6px 18px rgba(0,0,0,0.5);
+}
+
+/* btn-1: pulso */
+.btn-1{background:linear-gradient(90deg,#06b6d4,#3b82f6); animation:btnPulse 2s infinite}
+@keyframes btnPulse{0%{transform:scale(1)}50%{transform:scale(1.04)}100%{transform:scale(1)}}
+
+/* btn-2: slide in background */
+.btn-2{background:transparent;border:2px solid #60a5fa; position:relative; overflow:hidden}
+.btn-2::before{content:"";position:absolute;left:-100%;top:0;width:100%;height:100%;background:linear-gradient(90deg,#60a5fa, #06b6d4);transition:all .4s}
+.btn-2:hover::before{left:0;}
+
+/* btn-3: rotate slightly on hover */
+.btn-3{background:linear-gradient(90deg,#7c3aed,#06b6d4)}
+.btn-3:hover{transform:rotate(-6deg)}
+
+/* btn-4: growing shadow */
+.btn-4{background:linear-gradient(90deg,#f59e0b,#ef4444); position:relative}
+.btn-4:hover{transform:scale(1.06); box-shadow:0 12px 30px rgba(239,68,68,0.25)}
+
+/* btn-5: border morph */
+.btn-5{background:transparent;border:2px dashed #93c5fd;padding:0.6rem 1rem}
+.btn-5:hover{border-radius:30px; transform:scale(1.03)}
+
+/* Short descriptions */
+.short-desc{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1.2rem}
+.short-desc article{background:var(--glass); padding:1rem;border-radius:12px;min-height:90px}
+
+/* Interactive box with color-cycle */
+.interactive-box{margin-top:1.2rem;padding:1rem;border-radius:12px;display:inline-block}
+.color-cycle{padding:1rem;border-radius:10px; animation:colorCycle 6s infinite}
+@keyframes colorCycle{
+  0%{background:#ef4444}
+  33%{background:#f59e0b}
+  66%{background:#06b6d4}
+  100%{background:#ef4444}
+}
+
+/* Footer */
+.site-footer{text-align:center;padding:1.2rem 0;color:var(--muted);font-size:0.9rem;margin-top:2rem}
+
+/* Perfil page */
+.profile-hero h1{margin-top:0}
+.career-table{width:100%;border-collapse:collapse;margin:1rem 0;background:var(--glass);border-radius:10px;overflow:hidden}
+.career-table th, .career-table td{padding:0.8rem;text-align:left;border-bottom:1px solid rgba(255,255,255,0.03)}
+.career-table th{background:rgba(255,255,255,0.02);color:var(--muted)}
+
+/* Social icons */
+.socials{display:flex;gap:1rem;align-items:center}
+.social-icon, .cv-link{display:inline-flex;align-items:center;justify-content:center;padding:0.6rem;border-radius:10px;text-decoration:none;color:var(--muted)}
+.social-icon .icon{width:36px;height:36px;fill:none;stroke:currentColor;stroke-width:1.2;opacity:0.95;transition:transform .25s, color .25s}
+.social-icon:hover{color:#f97316; transform:translateY(-4px) scale(1.06)}
+.cv-link .rotate-text{display:inline-block;padding:0.4rem 0.6rem;border-radius:8px; background:linear-gradient(90deg,#111827,#0b1220); border:1px solid rgba(255,255,255,0.03)}
+/* Texto rotativo: gira 360° continuamente */
+.rotate-text{animation:rotate360 6s linear infinite; transform-origin:center}
+@keyframes rotate360{from{transform:rotate(0deg)} to{transform:rotate(360deg)}}
+
+/* Galería */
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:1rem}
+.gallery-item{background:var(--glass);border-radius:12px;overflow:hidden;position:relative}
+.gallery-item img{width:100%;height:auto;display:block;transition:transform .6s ease, filter .3s}
+.gallery-item figcaption{position:absolute;left:0;right:0;bottom:0;padding:0.8rem;background:linear-gradient(180deg, transparent, rgba(2,6,23,0.8));transform:translateY(100%);transition:transform .25s ease}
+.gallery-item:hover img{transform:scale(1.06); filter:brightness(.9)}
+.gallery-item:hover figcaption{transform:translateY(0)}
+
+/* Each image anim class - different entrance animations (subtle) */
+.anim-1{animation:float 6s ease-in-out infinite}
+@keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
+.anim-2 img{animation:scalePulse 4s infinite}
+@keyframes scalePulse{0%{transform:scale(1)}50%{transform:scale(1.03)}100%{transform:scale(1)}}
+.anim-3 img{animation:skewAnim 5s infinite}
+@keyframes skewAnim{0%{transform:skewX(0)}50%{transform:skewX(3deg)}100%{transform:skewX(0)}}
+.anim-4 img{animation:rotateAnim 8s infinite linear}
+@keyframes rotateAnim{0%{transform:rotate(0)}50%{transform:rotate(1deg)}100%{transform:rotate(0)}}
+.anim-5 img{animation:zoomIn 7s infinite}
+@keyframes zoomIn{0%{transform:scale(.98)}50%{transform:scale(1.02)}100%{transform:scale(.98)}}
+.anim-6 img{filter:grayscale(.2); transition:filter .4s}
+.anim-6:hover img{filter:grayscale(0)}
+.anim-7 img{animation:pop 6s infinite}
+@keyframes pop{0%{transform:translateY(0)}40%{transform:translateY(-8px)}100%{transform:translateY(0)}}
+.anim-8 img{animation:wiggle 5s infinite}
+@keyframes wiggle{0%{transform:rotate(-1deg)}50%{transform:rotate(1deg)}100%{transform:rotate(-1deg)}}
+
+/* Blog posts: simulate 'appear and slide up' using animation + stagger with delay */
+.posts{display:grid;gap:1.6rem;margin-top:1rem}
+.post{background:var(--glass);padding:1rem;border-radius:12px;opacity:0;transform:translateY(20px);animation:slideUp .9s ease forwards; animation-delay: calc(var(--i) * 0.18s)}
+.post img{width:100%;border-radius:8px;margin-bottom:0.6rem}
+@keyframes slideUp{to{opacity:1; transform:translateY(0)}}
+
+/* Assign custom properties to stagger items (works without JS by setting inline style in HTML) */
+.post:nth-child(1){--i:0}
+.post:nth-child(2){--i:1}
+.post:nth-child(3){--i:2}
+
+/* Read more button */
+.read-more{display:inline-block;padding:0.5rem 0.8rem;border-radius:8px;text-decoration:none;background:linear-gradient(90deg,#06b6d4,#3b82f6);color:white}
+
+/* Observaciones generales para CSS */
+/* 1. Botón cambiante: al clic cambiará tamaño y color gradualmente - emulate with :active */
+.btn:active{transform:scale(.98)}
+.btn-changing{transition:all .4s ease}
+
+/* 4. Cambio de tamaño con hover: cuadros que aumentan */
+.gallery-item:hover{transform:scale(1.02); transition:transform .25s}
+
+/* 5. Velocidad de animación variable: clase para texto con velocidad variable */
+.var-speed{display:inline-block; animation:spinVar 4s linear infinite}
+@keyframes spinVar{from{transform:rotate(0)} to{transform:rotate(360deg)}}
+
+/* Accessibility & responsive */
+@media (max-width:720px){
+  .nav nav{display:none}
+  .buttons-row{flex-direction:column}
+  .hero h1{font-size:1.5rem}
+}
+
+/* prefers-reduced-motion */
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important; transition:none!important}
+}
