@@ -1,38 +1,116 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8"><title>Blog - Cristiano Ronaldo</title>
-<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Profesional - Cristiano Ronaldo</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-<nav>
-<a href="index.html">Inicio</a>
-<a href="perfil.html">Perfil</a>
-<a href="galeria.html">Galería</a>
-<a href="blog.html">Blog</a>
-</nav>
-<h1>Blog Profesional</h1>
+    <div class="container">
+        <header>
+            <h1>Blog Profesional</h1>
+            <div class="button-container">
+                <a href="index.html" class="animated-btn">
+                    <i class="fas fa-home"></i> Inicio
+                </a>
+                <a href="perfil.html" class="animated-btn">
+                    <i class="fas fa-user"></i> Perfil
+                </a>
+                <a href="galeria.html" class="animated-btn">
+                    <i class="fas fa-images"></i> Galería
+                </a>
+                <a href="https://es.wikipedia.org/wiki/Cristiano_Ronaldo" class="animated-btn" target="_blank">
+                    <i class="fas fa-plus"></i> Ver Más
+                </a>
+            </div>
+        </header>
+        
+        <main>
+            <section class="blog-intro">
+                <h2>Trayectoria y Logros Profesionales</h2>
+                <p>Un recorrido por los hitos más importantes en la extraordinaria carrera de Cristiano Ronaldo.</p>
+            </section>
+            
+            <section class="blog-sections">
+                <!-- Sección 1: Pasos Profesionales -->
+                <div class="blog-section scroll-animation">
+                    <div class="section-header">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Cristiano_Ronaldo_2018.jpg/800px-Cristiano_Ronaldo_2018.jpg" alt="Evolución Profesional" class="section-image">
+                        <h3><i class="fas fa-football-ball"></i> Pasos Profesionales</h3>
+                    </div>
+                    <p>Desde su debut en el Sporting CP hasta convertirse en leyenda mundial, cada paso ha demostrado su evolución constante y adaptabilidad en diferentes ligas y estilos de juego. Su trayectoria incluye triunfos en Portugal, Inglaterra, España, Italia y Arabia Saudita.</p>
+                    <a href="https://es.wikipedia.org/wiki/Cristiano_Ronaldo" class="read-more-btn" target="_blank">
+                        Leer más sobre su carrera
+                    </a>
+                </div>
+                
+                <!-- Sección 2: Clubes -->
+                <div class="blog-section scroll-animation">
+                    <div class="section-header">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Real_Madrid_CF.svg/1200px-Real_Madrid_CF.svg.png" alt="Clubes" class="section-image">
+                        <h3><i class="fas fa-tshirt"></i> Clubes</h3>
+                    </div>
+                    <p>Ha dejado huella en todos los clubes donde ha jugado: Sporting CP, Manchester United, Real Madrid, Juventus y Al-Nassr, ganando títulos y estableciendo récords en cada uno. En el Real Madrid alcanzó su máximo esplendor con 4 Champions League.</p>
+                    <a href="https://www.realmadrid.com" class="read-more-btn" target="_blank">
+                        Visitar Real Madrid
+                    </a>
+                </div>
+                
+                <!-- Sección 3: Competencias -->
+                <div class="blog-section scroll-animation">
+                    <div class="section-header">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f5/UEFA_Champions_League.svg/800px-UEFA_Champions_League.svg.png" alt="Champions League" class="section-image">
+                        <h3><i class="fas fa-trophy"></i> Competencias</h3>
+                    </div>
+                    <p>Campeón en Premier League, La Liga, Serie A, Champions League, Eurocopa y Nations League. Su palmarés refleja su dominio en todas las competiciones. Es el máximo goleador histórico de la Champions League y de la selección portuguesa.</p>
+                    <a href="https://es.uefa.com/uefachampionsleague/" class="read-more-btn" target="_blank">
+                        Ver Champions League
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
 
-<section class="post">
-<h2>Primeros pasos en Sporting CP</h2>
-<img src="https://i.imgur.com/5ZQ3YwI.jpg">
-<p>Ronaldo debutó a los 17 años mostrando un talento excepcional.</p>
-<a href="https://www.sporting.pt/" target="_blank">Leer más</a>
-</section>
-
-<section class="post">
-<h2>Era dorada en Real Madrid</h2>
-<img src="https://i.imgur.com/gv1UoQz.jpg">
-<p>Ganó cuatro Champions y rompió múltiples récords goleadores.</p>
-<a href="https://www.realmadrid.com/" target="_blank">Leer más</a>
-</section>
-
-<section class="post">
-<h2>Al-Nassr y liderazgo actual</h2>
-<img src="https://i.imgur.com/Xf1O3Ty.jpg">
-<p>Continúa ampliando su legado en Arabia Saudita.</p>
-<a href="https://www.alnassr.sa/" target="_blank">Leer más</a>
-</section>
-
+    <script>
+        // Animación de scroll suave
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrollElements = document.querySelectorAll('.scroll-animation');
+            
+            const elementInView = (el, dividend = 1) => {
+                const elementTop = el.getBoundingClientRect().top;
+                return (
+                    elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
+                );
+            };
+            
+            const displayScrollElement = (element) => {
+                element.classList.add('scrolled');
+            };
+            
+            const hideScrollElement = (element) => {
+                element.classList.remove('scrolled');
+            };
+            
+            const handleScrollAnimation = () => {
+                scrollElements.forEach((el) => {
+                    if (elementInView(el, 1.2)) {
+                        displayScrollElement(el);
+                    } else {
+                        hideScrollElement(el);
+                    }
+                });
+            }
+            
+            // Ejecutar al cargar y al hacer scroll
+            window.addEventListener('scroll', () => {
+                handleScrollAnimation();
+            });
+            
+            // Ejecutar inicialmente
+            handleScrollAnimation();
+        });
+    </script>
 </body>
 </html>
